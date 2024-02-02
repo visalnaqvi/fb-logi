@@ -1,9 +1,7 @@
 import { useEffect } from 'react';
-import { useSession, signIn, signOut } from "next-auth/react";
 
 
 export default function Home() {
-  const { data: session } = useSession();
 
   useEffect(() => {
     // Load Facebook SDK script
@@ -49,11 +47,11 @@ export default function Home() {
           } else {
             console.log('User cancelled login or did not fully authorize.');
           }
-        },{config_id: '397032019679968',
+        },{config_id: '3682492275365546',
         response_type: 'token',
         override_default_response_type: true});
       }}>Login with Facebook</button>
-      <button onClick={() => signOut()}>Sign out</button>
+      <button>Sign out</button>
       <h2>Add Facebook Login to your webpage</h2>
       <p id="profile"></p>
     </div>
