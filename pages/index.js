@@ -16,7 +16,8 @@ export default function Home() {
     window.fbAsyncInit = function() {
       // Initialize the SDK with your app and the Graph API version for your app
       FB.init({
-        appId: '1651937501999025',
+        appId: '1374916353149686',
+        // appId: '1651937501999025',
         xfbml: true,
         version: 'v19.0',
       });
@@ -27,7 +28,6 @@ export default function Home() {
 
   return (
     <div>
-      <a href='https://www.facebook.com/dialog/oauth?client_id=1651937501999025&display=page&extras={"setup":{"channel":"IG_API_ONBOARDING"}}&redirect_uri=https://localhost:3000/success/&response_type=token&scope=token'>Login</a>
       <button onClick={() => {
         FB.login(function(response) {
           if (response.authResponse) {
