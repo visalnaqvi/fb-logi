@@ -3,3 +3,5 @@ const suc = ()=>{
         <p>hello</p>
     )
 }
+
+export default suc;

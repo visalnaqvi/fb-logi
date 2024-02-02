@@ -33,15 +33,24 @@ export default function Home() {
       <button onClick={() => {
         FB.login(function(response) {
           if (response.authResponse) {
+            console.log(response.authResponse);
             console.log('Welcome! Fetching your information....');
-            FB.api('/me', { fields: 'name, email' }, function(response) {
-              document.getElementById("profile").innerHTML = "Good to see you, " + response.name + ". I see your email address is " + response.email;
+            FB.api('me/accounts', { fields: 'data' }, function(responseNew) {
+              console.log("res of me.accounts",responseNew)
+              const pageId = responseNew.data[0].id
+              FB.api(`${pageId}?fields=instagram_business_account`,
+              { fields: 'instagram_business_account' },
+              function(res){
+                console.log("instagram_business_account", res)
+              }
+              )
+              // document.getElementById("profile").innerHTML = "Good to see you, " + responseNew.name + ". I see your email address is " + responseNew.email;
             });
           } else {
             console.log('User cancelled login or did not fully authorize.');
           }
-        },{config_id: '1069004141074307',
-        response_type: 'code',
+        },{config_id: '397032019679968',
+        response_type: 'token',
         override_default_response_type: true});
       }}>Login with Facebook</button>
       <button onClick={() => signOut()}>Sign out</button>
