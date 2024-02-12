@@ -27,8 +27,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      <button onClick={() => {
+    <div className="main-wrapper">
+      <h2>Add Facebook Login to your webpage</h2>
+      <button className="login-button" onClick={() => {
         FB.login(function(response) {
           if (response.authResponse) {
             console.log(response.authResponse);
@@ -39,7 +40,7 @@ export default function Home() {
               FB.api(`${pageId}?fields=instagram_business_account`,
               { fields: 'instagram_business_account' },
               function(res){
-                console.log("success",res.instagram_business_account.i)
+                console.log("success",res.instagram_business_account.id)
               }
               )
               // document.getElementById("profile").innerHTML = "Good to see you, " + responseNew.name + ". I see your email address is " + responseNew.email;
@@ -53,9 +54,6 @@ export default function Home() {
         response_type: 'token',
         override_default_response_type: true});
       }}>Login with Facebook</button>
-      <button>Sign out</button>
-      <h2>Add Facebook Login to your webpage</h2>
-      <p id="profile"></p>
     </div>
   );
 }
